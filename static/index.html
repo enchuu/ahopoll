@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Create Poll</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet type=text/css href="../static/style.css">
+</head>
+
+<body>
+
+<div id="poll" class="box">
+<h2>Create a Poll</h2>
+
+<form action="/submitpoll" method="POST">
+            
+        Title:<br>
+        <input class="fullwidth" type="text" required="required" name="title" id="title"/><br><br>
+
+        Description (optional):<br>
+        <textarea type="text" name="description" id="description"></textarea><br>
+    
+        <br>Questions: <a href="/usage">(How to enter questions)</a><br>
+        <textarea required="required" type="text" name="questions" id="questions"></textarea>
+
+        <br><br>Time limit (leave empty for none): 
+        <input class="small" type="text" name="days"/> days
+        <input class="small" type="text" name="hours"/> hours
+
+        <div><input type="checkbox" id="dont_log_ip" name="dont_log_ip" value="dont_log_ip" class="regular-checkbox" /><label for="dont_log_ip"></label>Allow multiple votes from the same IP address?</div>
+
+        <div><input type="checkbox" id="hide_results" name="hide_results" value="hide_results" class="regular-checkbox"/><label for="hide_results"></label>Hide results until the poll expires?</div>
+
+        <br><input type="submit" value="Submit"><br>
+
+</form>
+</div>
+
+<div class="center">
+    <a href="/">Home</a> |
+    <a href="/usage">Usage</a>
+</div>
+
+</body>
+</html>

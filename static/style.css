@@ -1,0 +1,197 @@
+body {
+	font-family: 'Droid Sans', 'Segoe UI', 'Liberation Sans', 'Roboto',
+		'FreeSans', 'Helvetica', 'Arial', sans-serif;
+    color: #222;
+    text-align: center;
+}
+
+.chart td {
+	padding: 0.2em;
+    vertical-align: top;
+}
+
+.chart tr {
+	position: relative;
+	width: auto;
+}
+
+.chart td.bar {
+	display: block;
+	position: absolute;
+	padding-left: 0;
+	padding-right: 0;
+	height: 1.1111em;
+	background: rgba(50,50,50,.1);
+    transition: width .3s;
+    z-index: -100;
+}
+
+
+.chart td.percent {
+    width: 8%;
+}
+.chart td.votes {
+    width: 5%;
+}
+.chart tr {
+	font-size: .9em;
+	font-weight: bold;
+}
+
+.chart table+p {
+	margin: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.chart table {
+    width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 0.1em;
+}
+.box {
+    background: rgba(100,100,100,.03);
+	position: relative;
+    width: 600px;
+    margin: 30px;
+    padding: 20px;
+    display: inline-block;
+    text-align: left;
+    box-shadow: 2px 2px 5px 1px #ccc;
+}
+
+.box h2{
+    text-align: center;
+}
+
+input[type="text"], textarea {
+    background: white;
+    resize: none;
+    border: 1px solid #ddd;
+}
+input[type="text"].fullwidth, textarea {
+	width: 98.5%;
+}
+input[type="text"].small {
+    width: 3em;
+}
+textarea#questions {
+	height: 20em;
+}
+textarea#description {
+	height: 8em;
+}
+
+.center {
+    padding: 10px;
+	font-size: 10pt;
+    color: #888;
+}
+
+a {
+	text-decoration: none;
+    font-size: 10pt;
+    color: #888;
+}
+
+input[type="submit"], button {
+    background: rgba(100,100,100,.15);
+    border: 0;
+}
+
+
+.regular-checkbox {
+	display: none;
+}
+
+.regular-checkbox + label {
+	background-color: white;
+    border: 1px solid #ddd;
+    width: 1em;
+    height: 1em;
+    margin: 3px 3px 6px 3px;
+    vertical-align: middle;
+	display: inline-block;
+	position: relative;
+}
+
+
+.regular-checkbox:checked + label {
+	background-color: #dfdfdf;
+}
+
+.options {
+    margin: 5px 10px;
+}
+h3 {
+    margin-bottom: 10px;
+}
+.pick {
+    margin-left: 5px;
+}
+.graphcontainer {
+    vertical-align: top;
+    width: 70%;
+    height: 300px;
+}
+.graph {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.optionscontainer{
+    width: 100%;
+}
+.toggle {
+    margin: auto;
+}
+.smallchart {
+    text-align: center;
+    padding: 8px;
+    vertical-align: top;
+}
+.smallchart td {
+	padding: 0.2em;
+    vertical-align: top;
+}
+
+.smallchart tr {
+	position: relative;
+	width: auto;
+}
+
+.smallchart td.bar {
+	display: block;
+	position: absolute;
+	padding-left: 0;
+	padding-right: 0;
+	height: 1.1111em;
+	background: rgba(50,50,50,.1);
+    z-index: -100;
+}
+.smallchart table {
+    padding-top: 5px;
+}
+.smallchart td.percent {
+    width: 8%;
+}
+.smallchart td.votes {
+    width: 5%;
+}
+.smallchart tr {
+    text-align: left;
+	font-size: .7em;
+	font-weight: bold;
+}
+
+.smallchart table+p {
+	margin: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.smallchart table {
+    width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 0.1em;
+}

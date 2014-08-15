@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>How to Enter Questions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet type=text/css href="../static/style.css">
+</head>
+
+<body>
+<div class="box">
+<h2>How to enter questions</h2>
+
+<p>Each block of text forms a question. Blocks of text are seperated by 2 newlines.<br><br>The first line is always the "question" you are asking. The next line can specify how many options are allowed to be selected. Enter 1 number to require exactly that amount of options. Enter 2 numbers seperated by a comma to allow a range of options between the 2 numbers. If you skip this, then the default is set to 1. The max amount of options a question can have is 250.<br><br>The next lines will specify the original options for the question. If you want to allow write in votes, add a * as the final line.</p>
+
+Example:<br><br>
+<code>
+    Pick 3 from the following: <br>
+    3<br>
+    one<br>
+    two<br>
+    three<br>
+    four<br><br>
+
+    Pick up to 2 from the following: <br>
+    0,2<br>
+    one<br>
+    two<br>
+    three<br>
+    four<br><br>
+
+    Pick 1-3 from the following: <br>
+    1,3<br>
+    one<br>
+    two<br>
+    three<br>
+    four<br><br>
+
+    Pick 1 from the following, or add your own option: <br>
+    one<br>
+    two<br>
+    three<br>
+    four<br>
+    *<br><br>
+</code>
+</div>
+
+<div class="center">
+    <a href="/">Home</a> |
+    <a href="/usage">Usage</a>
+</div>
+
+</body>
+</html>

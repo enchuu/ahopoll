@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Error</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet type=text/css href="../static/style.css">
+</head>
+
+<body>
+<div class="box">
+    <h2>{{ message }}</h2>
+</div>
+
+<div class="center">
+    <a href="/">Home</a> |
+    <a href="/usage">Usage</a> 
+    {% if id %}
+    |
+    <a href="/vote/{{ id }}">Vote</a> |
+    <a href="/results/{{ id }}">Results</a> |
+    <a href="/interactive/{{ id }}">Interactive Results</a> |
+    <a href="/graph/{{ id }}">Graph</a>
+    {% endif %}
+</div>
+</body>
+</html>

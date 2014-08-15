@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>{{ poll['title'] }}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet type=text/css href="../static/style.css">
+</head>
+
+<body>
+
+<div class="box">
+    
+    <h2> {{ poll['title'] }} </h2>
+    {% if poll['description'] %} {{ poll['description'] }}<br> {% endif %}
+    <form action="/submitvote/{{ poll['id'] }}" method="POST">
+
+        {% for question in poll['questions'] %}
+
+            {% set outer_loop = loop %}
+
+            <h3>{{ loop.index }}. {{ question['question'] }}</h3>
+            <span class="pick">Pick {{ question['range'] }}</span><div class="options">
+            {% for option in question['votes'] %}
+            
+                <div>
+                    <input type="{% if question['minopts'] == 1 and question['maxopts'] == 1 and not question['writein'] %}radio{% else %}checkbox{% endif %}" name="{{ outer_loop.index - 1}}" value="{{ loop.index - 1}}" id="{{ outer_loop.index }},{{loop.index}}" class="regular-checkbox"/>
+                    <label for="{{ outer_loop.index }},{{ loop.index }}"></label>
+                    <span class="tag">{{ option['option'] }}</span>
+                </div>
+            
+            {% endfor %}
+
+            {% if question['writein'] %}
+                <br>Write in votes (one per line):<br>
+                <textarea type="text" name="{{ loop.index - 1 }}_writeins"></textarea>
+            {% endif %}
+        </div>
+
+        {% endfor %}
+
+        {% if time_left %}
+        <br>Time left: {{ time_left }}
+            <br><br><input type="submit" id="vote" value="vote">
+        {% elif poll['time_limit'] == 0 %}
+            <br><input type="submit" id="vote" value="vote">
+        {% else %}
+            <br>This poll has expired. The results are available <a href="/results/{{ id }}">here</a>.
+        {% endif %}
+    </form>
+</div>
+
+<div class="center">
+    <a href="/">Home</a> |
+    <a href="/usage">Usage</a> 
+    {% if poll %}
+    |
+    <a href="/vote/{{ poll['id'] }}">Vote</a> |
+    <a href="/results/{{ poll['id'] }}">Results</a> |
+    <a href="/interactive/{{ poll['id'] }}">Interactive Results</a> |
+    <a href="/graph/{{ id }}">Graph</a>
+    {% endif %}
+</div>
+
+</body>
+</html>

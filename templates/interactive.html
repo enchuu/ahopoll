@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>{{ poll['title'] }}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel=stylesheet type=text/css href="../static/style.css">
+<script>
+var votes = {{ votes|safe }};
+</script>
+<script src="../static/fancy.js"></script>
+</head>
+
+{% set total_votes = poll['vote_count'] %}
+{% if total_votes == 0 %} {% set safe_total_votes = 1 %} {% else %}
+{% set safe_total_votes = total_votes %} {% endif %}
+
+<body>
+<div class="box">
+
+    <h2> {{ poll['title'] }} </h2>
+
+    {% if poll['description'] %} {{ poll['description'] }}<br>{% endif %}
+    
+    <div class="chart">
+
+    {% for question in poll['questions'] %}
+
+        {% set outer_loop = loop %}
+        <h3>{{ loop.index }}. {{ question['question'] }}</h3>
+        <div class="options"><table><tbody>
+
+        {% for vote in question['votes'] %}
+
+            {% set votes = vote['votes'] %}
+            {% set px = votes / safe_total_votes * 580 %}
+            {% set percent = votes / safe_total_votes * 100 %}
+            {% set id = (outer_loop.index - 1)|string + ',' + (loop.index - 1)|string %}
+            <tr class="entree" id="{{ id }}">
+                <td class="bar" id="{{ id }}outerbar" style="width: {{ px }}px;"></td>
+                <td class="bar" id="{{ id }}bar" style="width: {{ px }}px;"></td>
+                <td class="percent" id="{{ id }}per">{{ percent | int }}%</td>
+                <td class="votes" id="{{ id }}votes">{{ votes }}</td>
+                <td>{{ vote['option'] }}</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody></table></div>
+
+    {% endfor %}
+</div>
+<br>Total votes: {{ total_votes }} | Selected votes: 
+<span id="selected_votes"> {{ total_votes }}</span>
+</div>
+
+<div class="center">
+    <a href="/">Home</a> |
+    <a href="/usage">Usage</a> 
+    {% if poll %}
+    |
+    <a href="/vote/{{ poll['id'] }}">Vote</a> |
+    <a href="/results/{{ poll['id'] }}">Results</a> |
+    <a href="/interactive/{{ poll['id'] }}">Interactive Results</a> |
+    <a href="/graph/{{ poll['id'] }}">Graph</a>
+    {% endif %}
+</div>
+
+</body>
+</html>
